@@ -1,11 +1,10 @@
 #include <iostream>
 #include "droid.hh"
-using namespace std;
 
 Droid::Droid(std::string const& id) : _id(id), _energy(50), _attack(25), _thoughness(15), _status(NULL)
 {
     _status = new std::string("Standing by");
-    cout << "Droid '" << _id << "' Activated" << endl;
+    std::cout << "Droid '" << _id << "' Activated" << std::endl;
 }
 
 Droid::Droid(Droid const& other) : _id(other._id), _energy(other._energy), _attack(other._attack), _thoughness(other._thoughness), _status(NULL)
@@ -21,14 +20,14 @@ Droid::Droid(Droid const& other) : _id(other._id), _energy(other._energy), _atta
         delete _status;
         _status = NULL;
     }
-    cout << "Droid '" << _id << "' Activated, Memory Dumped" << endl;
+    std::cout << "Droid '" << _id << "' Activated, Memory Dumped" << std::endl;
 }
 
 Droid::~Droid()
 {
     if (_status)
         delete _status;
-    cout << "Droid '" << _id << "' Destroyed" << endl;
+    std::cout << "Droid '" << _id << "' Destroyed" << std::endl;
 }
 
 Droid& Droid::operator=(Droid const& other)
@@ -135,7 +134,7 @@ Droid& operator<<(Droid& droid, size_t& value)
     return droid;
 }
 
-ostream& operator<<(ostream& stream, Droid const& droid)
+std::ostream& operator<<(std::ostream& stream, Droid const& droid)
 {
     stream << "Droid '" << droid.getId() << "', " << (droid.getStatus() ? *droid.getStatus() : "") << ", " << droid.getEnergy();
     return stream;

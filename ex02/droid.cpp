@@ -1,11 +1,10 @@
 #include <iostream>
 #include "droid.hh"
-using namespace std;
 
 Droid::Droid(const std::string id) 
 	: _id(id), _energy(50), _attack(25), _toughness(15), _status(new std::string ("Standing by"))
 {
-	cout << "Droid '" << _id << "' Activated\n";
+	std::cout << "Droid '" << _id << "' Activated\n";
 	this->BattleData = new DroidMemory();
 }
 
@@ -21,7 +20,7 @@ Droid::Droid(const Droid &droid)
 		delete _status;
 		_status = droid._status;
 	}
-	cout << "Droid '" << _id << "' Activated, Memory Dumped\n";
+	std::cout << "Droid '" << _id << "' Activated, Memory Dumped\n";
 }
 
 bool Droid::operator()(const std::string *task, size_t exp)
@@ -107,7 +106,7 @@ std::ostream &operator<<(std::ostream &s, const Droid &droid)
 
 Droid::~Droid()
 {
-	cout << "Droid '" << _id << "' Destroyed\n";
+	std::cout << "Droid '" << _id << "' Destroyed\n";
 }
 
 std::string Droid::getId() const
